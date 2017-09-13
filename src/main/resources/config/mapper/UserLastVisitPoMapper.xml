@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.demo.database.mapper.UserLastVisitPoMapper" >
+  <resultMap id="BaseResultMap" type="com.demo.database.po.UserLastVisitPo" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <id column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="last_visit_time" property="lastVisitTime" jdbcType="TIMESTAMP" />
+    <result column="last_city" property="lastCity" jdbcType="VARCHAR" />
+    <result column="last_city_code" property="lastCityCode" jdbcType="INTEGER" />
+    <result column="last_ip" property="lastIp" jdbcType="VARCHAR" />
+    <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
+    <result column="app_version" property="appVersion" jdbcType="VARCHAR" />
+    <result column="org_agent" property="orgAgent" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    user_id, last_visit_time, last_city, last_city_code, last_ip, device_type, app_version, 
+    org_agent
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.demo.database.po.UserLastVisitPoExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user_last_visit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.demo.database.po.UserLastVisitPoExample" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    delete from tb_user_last_visit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <select id="countByExample" parameterType="com.demo.database.po.UserLastVisitPoExample" resultType="java.lang.Integer" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select count(*) from tb_user_last_visit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update tb_user_last_visit
+    <set >
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.lastVisitTime != null" >
+        last_visit_time = #{record.lastVisitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastCity != null" >
+        last_city = #{record.lastCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastCityCode != null" >
+        last_city_code = #{record.lastCityCode,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastIp != null" >
+        last_ip = #{record.lastIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deviceType != null" >
+        device_type = #{record.deviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appVersion != null" >
+        app_version = #{record.appVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orgAgent != null" >
+        org_agent = #{record.orgAgent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    update tb_user_last_visit
+    set user_id = #{record.userId,jdbcType=BIGINT},
+      last_visit_time = #{record.lastVisitTime,jdbcType=TIMESTAMP},
+      last_city = #{record.lastCity,jdbcType=VARCHAR},
+      last_city_code = #{record.lastCityCode,jdbcType=INTEGER},
+      last_ip = #{record.lastIp,jdbcType=VARCHAR},
+      device_type = #{record.deviceType,jdbcType=VARCHAR},
+      app_version = #{record.appVersion,jdbcType=VARCHAR},
+      org_agent = #{record.orgAgent,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <select resultMap="BaseResultMap" parameterType="com.demo.database.po.UserLastVisitPoExample" id="selectByExampleWithRowbounds" >
+    <!--
+      WARNING - @mbggenerated
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user_last_visit
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+</mapper>
